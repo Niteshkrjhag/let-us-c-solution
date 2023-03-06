@@ -12,7 +12,7 @@ int main(){
     }
     return 0;
 } */
-#include<stdio.h>
+/* #include<stdio.h>
 int main(){
     int arr[5];
     printf("enter five number\n");
@@ -33,5 +33,23 @@ int main(){
         }
     }
     printf("second highest no in array is: %d\n",arr[3]);
+    return 0;
+}
+ */
+#include<stdio.h>
+int main(){
+int arr[5],*a[5];
+printf("enter five elements\n");
+for(int i=0;i<5;i++){
+    scanf("%d",&arr[i]);
+}
+for(int i=0;i<=4;i++){
+a[i]=&arr[i];
+}
+printf("%d\t",*a[4]);
+for(int i=3;i>=1;i--){
+    printf("%d\t",*a[i]);
+}
+printf("%d\t",*a[0]);
     return 0;
 }
