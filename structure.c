@@ -250,60 +250,112 @@ int main(){
 }
  */
 // B] Attempt the following questions.
-#include<stdio.h>
-struct student {
-        int Roll; char Name[25]; char dep[10];char course[10]; int yoj;
-    };
-void func_stud(int,struct student);
-void link_float();
-void func_detail(int);
-
+// a)
+/* #include<stdio.h>
+#include<stdlib.h>
+struct student{
+int rn; char name[15]; char dep[15]; char course[15];int yoj;
+};
+void fun_yoj (int,struct student arr[]);
+void fun_rn (int,struct student arr[]);
 int main(){
-    struct student t[5];
-    int y,r;
-    printf("Enter the roll num,name,department,course and year of joining respectively for 5 students\n");
-    for(int i=0;i<5;i++){
-        scanf("%d%s%s%s%d",&t[i].Roll,&t[i].Name,&t[i].dep,&t[i].course,&t[i].yoj);
-        fflush(stdin);
+    int x,m;
+struct student a[3];
+printf("enter the roll no,name,department,couse and year of joining respectively\n");
+for(int i=0;i<3;i++){
+scanf("%d",&a[i].rn);
+scanf("%s",&a[i].name);
+fflush(stdin);
+scanf("%s",&a[i].dep);
+scanf("%s",&a[i].course);
+scanf("%d",&a[i].yoj);
+}
+printf("enter the year of joining of students to know all the names\n");
+scanf("%d",&x);
+fun_yoj (x,a);
+printf("enter the roll no of student to get its detail\n");
+scanf("%d",&m);
+fun_rn (m,a);
+return 0;
+}
+void fun_yoj (int y,struct student arr[]){
+printf("Name of student who joined in %d year are:\n",y);
+for(int i=0;i<3;i++) {
+if (y==arr[i].yoj){
+   printf("%s\n",&arr[i].name);
+}
+}
+}
+void fun_rn (int m,struct student brr[]){
+printf("The details of students\n");
+for(int i=0;i<3;i++){
+    if (m==brr[i].rn){
+        printf("roll no=%d\n name=%s\n department=%s\n couse=%s\n year of joining=%d\n\n",brr[i].rn,brr[i].name,brr[i].dep,brr[i].course,brr[i].yoj);
     }
-printf("enter the year to know who joined in that particular year\n");
-scanf("%d",&y);
-func_stud(y,&t[0]);
-printf("enter the roll no to get students detail\n");
-scanf("%d",&r);
-func_detail(r);
-    return 0;
 }
-void link_float(){
-    float a=0,*b;
-    b=&a;
-    a=*b;
+} */
+// b)
+#include<stdio.h>
+#include<stdio.h>
+struct data{
+    int an; char name[15]; int balance;
+};
+struct req{
+    int acc;
+};
+void fun_below (int,struct data []);
+void form (int,struct req);
+int main(){
+int m;
+struct data a[3];
+printf("enter the account number,name and balance in account respectively\n");
+for(int i=0;i<3;i++){
+  scanf("%d%s",&a[i].an,&a[i].name);
+  fflush(stdin);
+  scanf("%d",&a[i].balance);
 }
-void func_stud(struct student t){
-    int p=0;
- printf("In year %d name of student who joined are as follows:\n",x);
- for(int i=0;i<5;i++){
-    if(x==t[i].yoj){
-        p++;
-        printf("%s\n",t[i].Name);
+fun_below (100,a);
+printf("if you want to request for withdrawal or deposit then enter a number\n");
+scanf("%d",&m);
+struct req k;
+    printf("enter the account number\n");
+    scanf("%d",&k.acc);
+if(m==1){
+    printf("enter the ammount you want to deposit\n");
+form (1,k);
+}
+else if (m==0){
+    printf("enter the ammount you want to withdrawal\n");
+    form (0,k);
+}
+return 0;
+}
+void fun_below (int x,struct data b[]){
+    printf("Account number and name of each customer with balance less than hundred are\n");
+    for(int i=0;i<3;i++){
+        if(b[i].balance<x){
+            printf("account number=%d\n name=%s\n",b[i].an,b[i].name);
+        }
     }
- }
- if(p==0){
-    printf("sorry no one joined in %d year\n",x);
- }
 }
-void func_detail(int m){
-    int p=0;
-    struct student t[5];
-    printf("The detail of student is as follows:\n");
-    for(int i=0;i<5;i++){   
-    if(m==t[i].Roll){
-        p++;
-      printf("Name of student=%s\ndepartment=%s\ncourse=%s\nyear of joining=%d\n",t[i].Name,t[i].dep,t[i].course,t[i].yoj);
+void form (int x,struct req b){
+   int m; 
+   if(x==0){
+        
+        printf("you are in withdrawal section\n");
+        printf("enter the ammount you want to withdrawl\n");
+        scanf("%d",&m);
+        if (m<100){
+        printf("the balance is insufficient for the specified withdrawal\n");
+    }
+    else{
+        printf("you withdrawal ammount=%d from account=%d\n ",m,b.acc);
     }    
     }
-    if(p==0){
-        printf("sorry there is no detail for student with roll no %d",m);
+    else if(x==1){
+        printf("you are in deposit section\n");
+        printf("enter the amount you want to deposit\n");
+        scanf("%d",&m);
+        printf("you deposited %d ammount in %d account\n",m,b.acc);
     }
-    
 }
