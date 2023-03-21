@@ -1,0 +1,6 @@
+*.exe
+.vscode/
+output/
+classwork_1.c/
+myfirstgame.c/
+

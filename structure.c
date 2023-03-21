@@ -250,60 +250,271 @@ int main(){
 }
  */
 // B] Attempt the following questions.
-#include<stdio.h>
-struct student {
-        int Roll; char Name[25]; char dep[10];char course[10]; int yoj;
-    };
-void func_stud(int,struct student);
-void link_float();
-void func_detail(int);
-
+// a)
+/* #include<stdio.h>
+#include<stdlib.h>
+struct student{
+int rn; char name[15]; char dep[15]; char course[15];int yoj;
+};
+void fun_yoj (int,struct student arr[]);
+void fun_rn (int,struct student arr[]);
 int main(){
-    struct student t[5];
-    int y,r;
-    printf("Enter the roll num,name,department,course and year of joining respectively for 5 students\n");
-    for(int i=0;i<5;i++){
-        scanf("%d%s%s%s%d",&t[i].Roll,&t[i].Name,&t[i].dep,&t[i].course,&t[i].yoj);
-        fflush(stdin);
+    int x,m;
+struct student a[3];
+printf("enter the roll no,name,department,couse and year of joining respectively\n");
+for(int i=0;i<3;i++){
+scanf("%d",&a[i].rn);
+scanf("%s",&a[i].name);
+fflush(stdin);
+scanf("%s",&a[i].dep);
+scanf("%s",&a[i].course);
+scanf("%d",&a[i].yoj);
+}
+printf("enter the year of joining of students to know all the names\n");
+scanf("%d",&x);
+fun_yoj (x,a);
+printf("enter the roll no of student to get its detail\n");
+scanf("%d",&m);
+fun_rn (m,a);
+return 0;
+}
+void fun_yoj (int y,struct student arr[]){
+printf("Name of student who joined in %d year are:\n",y);
+for(int i=0;i<3;i++) {
+if (y==arr[i].yoj){
+   printf("%s\n",&arr[i].name);
+}
+}
+}
+void fun_rn (int m,struct student brr[]){
+printf("The details of students\n");
+for(int i=0;i<3;i++){
+    if (m==brr[i].rn){
+        printf("roll no=%d\n name=%s\n department=%s\n couse=%s\n year of joining=%d\n\n",brr[i].rn,brr[i].name,brr[i].dep,brr[i].course,brr[i].yoj);
     }
-printf("enter the year to know who joined in that particular year\n");
-scanf("%d",&y);
-func_stud(y,&t[0]);
-printf("enter the roll no to get students detail\n");
-scanf("%d",&r);
-func_detail(r);
-    return 0;
 }
-void link_float(){
-    float a=0,*b;
-    b=&a;
-    a=*b;
+} */
+// b)
+/* #include<stdio.h>
+#include<stdio.h>
+struct data{
+    int an; char name[15]; int balance;
+};
+struct req{
+    int acc;
+};
+void fun_below (int,struct data []);
+void form (int,struct req);
+int main(){
+int m;
+struct data a[3];
+printf("enter the account number,name and balance in account respectively\n");
+for(int i=0;i<3;i++){
+  scanf("%d%s",&a[i].an,&a[i].name);
+  fflush(stdin);
+  scanf("%d",&a[i].balance);
 }
-void func_stud(struct student t){
-    int p=0;
- printf("In year %d name of student who joined are as follows:\n",x);
- for(int i=0;i<5;i++){
-    if(x==t[i].yoj){
-        p++;
-        printf("%s\n",t[i].Name);
+fun_below (100,a);
+printf("if you want to request for withdrawal or deposit then enter a number\n");
+scanf("%d",&m);
+struct req k;
+    printf("enter the account number\n");
+    scanf("%d",&k.acc);
+if(m==1){
+    printf("enter the ammount you want to deposit\n");
+form (1,k);
+}
+else if (m==0){
+    printf("enter the ammount you want to withdrawal\n");
+    form (0,k);
+}
+return 0;
+}
+void fun_below (int x,struct data b[]){
+    printf("Account number and name of each customer with balance less than hundred are\n");
+    for(int i=0;i<3;i++){
+        if(b[i].balance<x){
+            printf("account number=%d\n name=%s\n",b[i].an,b[i].name);
+        }
     }
- }
- if(p==0){
-    printf("sorry no one joined in %d year\n",x);
- }
 }
-void func_detail(int m){
-    int p=0;
-    struct student t[5];
-    printf("The detail of student is as follows:\n");
-    for(int i=0;i<5;i++){   
-    if(m==t[i].Roll){
-        p++;
-      printf("Name of student=%s\ndepartment=%s\ncourse=%s\nyear of joining=%d\n",t[i].Name,t[i].dep,t[i].course,t[i].yoj);
+void form (int x,struct req b){
+   int m; 
+   if(x==0){
+        
+        printf("you are in withdrawal section\n");
+        printf("enter the ammount you want to withdrawl\n");
+        scanf("%d",&m);
+        if (m<100){
+        printf("the balance is insufficient for the specified withdrawal\n");
+    }
+    else{
+        printf("you withdrawal ammount=%d from account=%d\n ",m,b.acc);
     }    
     }
-    if(p==0){
-        printf("sorry there is no detail for student with roll no %d",m);
+    else if(x==1){
+        printf("you are in deposit section\n");
+        printf("enter the amount you want to deposit\n");
+        scanf("%d",&m);
+        printf("you deposited %d ammount in %d account\n",m,b.acc);
     }
-    
+} */
+
+// C]
+/* // wap to store information corresponding to a part.
+#include<stdio.h>
+#include<string.h>
+struct part{
+            int yom; char mat[15]; int quantity;
+            };
+struct serial{
+              char serial[4]; struct part s[2];
+             };
+int main(){
+struct serial one[2];
+printf("enter the detail with engine part starting from AA0 to FF9\n");
+for(int i=0;i<=1;i++){
+    scanf("%s%d%s%d",one[i].serial,&one[i].s[i].yom,one[i].s[i].mat,&one[i].s[i].quantity);
 }
+int num,r=0;
+printf("enter the number of parts for which you want to get detail about\n");
+scanf("%d",&num);
+char s_no[num][4];
+printf("enter the serial number of parts of which you want to get detail\n");
+for(int i=0;i<num;i++){
+scanf("%s",s_no[i][4]);
+//fflush(stdin);        
+}
+printf("The information regarding part with serial no :\n");
+for(int i=0;i<=1;i++){
+if(strcmp(&s_no[i][4],one[i].serial)==0){
+    r++;
+printf("serial number=%s\nyear of manufacturing=%d\nmaterial=%s\nquantity=%d\n\n\n",one[i].serial,one[i].s[i].yom,one[i].s[i].mat,one[i].s[i].quantity);
+}
+}
+if(r==0){
+printf("sorry,you entered wrong serial no or we have no information regarding that part currently\n");
+}
+return 0;
+} */
+
+// ***** in the above program try to store serial number displaying to user and from aa1,aa2,aa3....cc4,cc5,cc6.....ff9
+//e]
+/* #include<stdio.h>
+ struct doj{
+int day;int month;int year;
+};
+struct employee {
+int emp_code; char name[19]; struct doj l;
+};
+int main(){
+    int day,month,year;
+struct employee a[5];
+printf("enter the employee code,employee name and doj(day-month-year)\n");
+for(int i=0;i<5;i++){
+    scanf("%d%s%d%d%d",&a[i].emp_code,a[i].name,&a[i].l.day,&a[i].l.month,&a[i].l.year);
+}
+printf("enter the current date(day,month and year)\n");
+scanf("%d%d%d",&day,&month,&year);
+int dd,dm,dy;
+float result;
+printf("The name of the employ who have completed 3 years or more are:\n");
+for(int i=0;i<5;i++){
+dd=day-a[i].l.day;
+dm=month-a[i].l.month;
+dy=year-a[i].l.year;
+if(dd>=0 && dm>=0 && dy>=0){
+result=dd/365.0+dm/12.0+dy;
+if(result>=3){
+    printf("%s\n",a[i].name);
+}
+}
+else if(dd<0 && dm>=0 && dy>=0){
+    result=dm/12.0-dd/365.0+dy;
+    if(result>=3){
+    printf("%s\n",a[i].name);
+}
+}
+else if (dm<0 && dd>=0 && dy>=0){
+    result=-dm/12.0+dd/365.0+dy;
+    if(result>=3){
+    printf("%s\n",a[i].name);
+}
+else if (dy<0){
+    printf("you entered wrong current year");
+}
+}
+}
+return 0;
+}*/
+
+// ********** in the above wap to take user date in single line and find how many day happened from last entered date;
+// i]
+/*  #include<stdio.h>
+ #include<string.h>
+ struct library {
+    char an[15];
+    char tob[30]; 
+    char author[30]; 
+    int price;
+    char flag[10];
+ };
+ int main(){
+char aun[15];
+char t[30];
+struct library a[3];
+printf("Enter the accession number, title of book,author name, price and flag\n");
+for(int i=0;i<3;i++){
+scanf("%s", a[i].an);
+while (getchar() != '\n');
+scanf("%s%s%d%s",a[i].tob,a[i].author,&a[i].price,a[i].flag);
+}
+printf("\nDisplaying book information\n");
+for(int i=0;i<3;i++){
+printf("accession number=%s\ntitle of the book=%s\nauthor=%s\nprice=%d\nflag=%s\n\n\n",a[i].an,a[i].tob,a[i].author,a[i].price,a[i].flag);
+}
+printf("enter the author name\n");
+scanf("%s",aun);
+
+for(int i=0;i<3;i++){
+if(strcmp(aun,a[i].author)==0){
+printf("book that are availabe of author %s are:\n",a[i].author);
+printf("%s\n",a[i].tob);
+}
+} 
+printf("\n\n");
+for(int i=0;i<2;i++){
+if(strcmp(a[i].an, a[i+1].an)>0){
+strcpy(t, a[i].tob);
+strcpy(a[i].tob, a[i+1].tob);
+strcpy(a[i+1].tob, t);
+}
+}
+printf("The books in the order of accession number\n");
+for(int i=0;i<3;i++){
+    printf("%s\n",a[i].tob);
+}
+return 0;
+} */
+
+
+//g]
+/*#include<stdio.h>
+#include<string.h>
+struct data{
+char day[3];char month[3];char year[5];
+};
+int main(){
+struct data a[2];
+printf("enter the day, month and year respectively\n");
+scanf("%s%s%s",a[0].day,a[0].month,a[0].year);
+scanf("%s%s%s",a[1].day,a[1].month,a[1].year);
+if(strcmp(a[0].day,a[1].day)==0 && strcmp(a[0].month,a[1].month)==0 && strcmp(a[0].year,a[1].year)==0){
+    printf("The return value is 0.");
+return 0;
+}
+else{
+printf("The return value is 1");
+return 1;    
+}
+} */
